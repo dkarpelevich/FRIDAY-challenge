@@ -1,4 +1,4 @@
-import re
+import re, json
 
 
 def read_input_file(old_file):
@@ -11,35 +11,49 @@ def read_input_file(old_file):
 
 
 def parse_input_addresses(address_list):
-    print('parse_input_addresses begin addresses_list', address_list)
-    result_string = '{"addresses": ['
+    result_list = []
+
     for i in address_list:
-        match_obj = re.match(r'\d+', i, re.I)
-        if match_obj:
-            street_wo_house = i[len(match_obj.group(0)):]
+
+        match_first_digit = re.match(r'\d+', i, re.I)
+        match_house_number = re.search(r' no.\d+.*$|d.\d+.*$', i, re.I)
+
+        if match_first_digit and not match_house_number:
+            if i.find(', ') != -1:
+                house_number = i[:i.index(', ')]
+            else:
+                house_number = i[:i.index(' ')]
+            street_wo_house = i[len(house_number):]
             start = street_wo_house.index(' ') + len(' ')
-            string_inc = '{"street":' + '"' + street_wo_house[start:street_wo_house.index('\n')] + '",'
-            if street_wo_house.startswith(' '):
-                result_string += string_inc
-            elif street_wo_house.startswith(', '):
-                result_string += string_inc
-            result_string += '"housenumber":' + '"' + str(match_obj.group(0)) + '"}'
+            string_inc = '{"street": ' + '"' + street_wo_house[start:street_wo_house.index('\n')] + '",' + \
+                         '"housenumber": ' + '"' + house_number + '"}'
+            if street_wo_house.startswith(' ') or street_wo_house.startswith(', '):
+                result_list.append(string_inc)
+            else:
+                print('Match for {} failed'.format(i))
+
+
+
         else:
             print("No match!!")
-    print(result_string)
-    print('parse_input_addresses end addresses_list', address_list)
+    return result_list
 
 
 def write_to_output_file(new_file, data):
+    result_list = parse_input_addresses(data)
+    json_output = '{"addresses": [' + ','.join(result_list) + ']}'
+    try:
+        json.loads(json_output)
+    except ValueError:
+        print('Json object is not correct!', json_output)
+        return
     with open(new_file, 'w') as outfile:
-        outfile.write(data)
+        outfile.write(json.dumps(json.loads(json_output), indent=4))
 
 
-print('19')
 addresses_list1 = read_input_file('addresses')
-print('21')
-parse_input_addresses(addresses_list1)
-# write_to_output_file('parsed_file', data1)
+# parse_input_addresses(addresses_list1)
+write_to_output_file('parsed_file', addresses_list1)
 
 # go by input file
 # wright strings to list
