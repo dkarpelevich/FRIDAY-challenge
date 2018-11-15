@@ -1,4 +1,5 @@
-import re, json
+import json
+import re
 
 
 def read_input_file(old_file):
@@ -15,14 +16,14 @@ def parse_input_addresses(address_list):
 
     for i in address_list:
 
-        match_first_digit = re.match(r'\d+', i, re.I)
-        match_house_number = re.search(r' no.\d+.*$|d.\d+.*$', i, re.I)
+        match_first_digit = re.match(r'^\d+', i, re.I)
+        match_house_label = re.search(r'\b(no \d+).*$|\b(no\.\d+).*$|\b(no\. \d+).*$|\b(no\d+).*$|'
+                                      r'\b(d \d+).*$|\b(d\.\d+).*$|\b(d\. \d+).*$|\b(d\d+).*$|'
+                                      r'\b(bud \d+).*$|\b(bud\.\d+).*$|\b(bud\. \d+).*$|\b(bud\d+).*$',
+                                      i, re.I)
 
-        if match_first_digit and not match_house_number:
-            if i.find(', ') != -1:
-                house_number = i[:i.index(', ')]
-            else:
-                house_number = i[:i.index(' ')]
+        if match_first_digit and not match_house_label:
+            house_number = (i[:i.index(', ')] if (i.find(', ') != -1) else i[:i.index(' ')])
             street_wo_house = i[len(house_number):]
             start = street_wo_house.index(' ') + len(' ')
             string_inc = '{"street": ' + '"' + street_wo_house[start:street_wo_house.index('\n')] + '",' + \
@@ -32,10 +33,20 @@ def parse_input_addresses(address_list):
             else:
                 print('Match for {} failed'.format(i))
 
+        elif not match_first_digit and not match_house_label:
+            house_number = re.search(r'\b(\d+).*$', i, re.I)
+            string_inc = '{"street": ' + '"' + i[:i.index(house_number.group(0))].rstrip() + '",' + \
+                         '"housenumber": ' + '"' + str(house_number.group(0)) + '"}'
+            result_list.append(string_inc)
 
+        elif match_house_label:
+            street_wo_house = i[:i.index(match_house_label.group(0))]
+            string_inc = '{"street": ' + '"' + street_wo_house.rstrip() + '",' + \
+                         '"housenumber": ' + '"' + str(match_house_label.group(0)) + '"}'
+            result_list.append(string_inc)
 
         else:
-            print("No match!!")
+            print("No match!!", i)
     return result_list
 
 
