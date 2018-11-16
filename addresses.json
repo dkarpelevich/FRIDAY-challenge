@@ -1,0 +1,176 @@
+{
+    "addresses": [
+        {
+            "street": "Winterallee",
+            "housenumber": "3"
+        },
+        {
+            "street": "Musterstr.",
+            "housenumber": "45"
+        },
+        {
+            "street": "Blaufeldweg",
+            "housenumber": "123B"
+        },
+        {
+            "street": "Am Bächle",
+            "housenumber": "23"
+        },
+        {
+            "street": "Auf der Vogelwiese",
+            "housenumber": "23 b"
+        },
+        {
+            "street": "rue de la revolution",
+            "housenumber": "4"
+        },
+        {
+            "street": "Broadway Av",
+            "housenumber": "200"
+        },
+        {
+            "street": "Calle Aduana",
+            "housenumber": "29"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "No 1540"
+        },
+        {
+            "street": "Charlottenstrasse.",
+            "housenumber": "9"
+        },
+        {
+            "street": "rue de la 34 revolution",
+            "housenumber": "43"
+        },
+        {
+            "street": "8 rue de la rev7olution",
+            "housenumber": "4/3"
+        },
+        {
+            "street": "10 rue de la revolution, 34",
+            "housenumber": "4 g"
+        },
+        {
+            "street": "rue de la revolution",
+            "housenumber": "4g"
+        },
+        {
+            "street": "Broadway Av",
+            "housenumber": "1"
+        },
+        {
+            "street": "Broadway Av",
+            "housenumber": "200/3"
+        },
+        {
+            "street": "Broadway Av",
+            "housenumber": "200JK"
+        },
+        {
+            "street": "4, rue de la revolution",
+            "housenumber": "No 12"
+        },
+        {
+            "street": "43, rue de la revolutiNO",
+            "housenumber": "no.1-2"
+        },
+        {
+            "street": "4/3, rue de la revolution",
+            "housenumber": "D. 3"
+        },
+        {
+            "street": "4 g, rue de la revolution",
+            "housenumber": "d. 3a"
+        },
+        {
+            "street": "4g, rue de la revolution",
+            "housenumber": "bud.2/a"
+        },
+        {
+            "street": "1 Broadway Av",
+            "housenumber": "d 7a"
+        },
+        {
+            "street": "200 Broadway BUDva",
+            "housenumber": "BUD. 1-a"
+        },
+        {
+            "street": "200/3 Broadway Av",
+            "housenumber": "Bud 3/5 kv.4"
+        },
+        {
+            "street": "200JK Broadway Av",
+            "housenumber": "No 34"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "No. 1"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "No12"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "No.123"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "no 2"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "no. 23"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "no234"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "no.3"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "No 34A"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "No. 5-67"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "No7/8"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "D 1"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "d 1-2"
+        },
+        {
+            "street": "CalleBudNo 39",
+            "housenumber": "Bud 1"
+        },
+        {
+            "street": "Calle 39Bud",
+            "housenumber": "bud. 1-2"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "d. 3 kv.29"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "d1540 kv. 3"
+        },
+        {
+            "street": "Calle 39",
+            "housenumber": "d.1540 kv 34"
+        }
+    ]
+}
