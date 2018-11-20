@@ -25,29 +25,32 @@ def parse_input_addresses(line):
             house_number = (line[:line.index(', ')] if (line.find(', ') != -1) else line[:line.index(' ')])
             street_wo_house = line[len(house_number):]
             start = street_wo_house.index(' ') + len(' ')
-            json_address = '{"street": ' + '"' + street_wo_house[start:street_wo_house.rindex('\n')] + '",' + \
+            street_wo_house = street_wo_house[start:street_wo_house.rindex('\n')]
+            json_address = '{"street": ' + '"' + street_wo_house + '",' + \
                            '"housenumber": ' + '"' + house_number + '"},'
         except (AttributeError, ValueError) as e:
-            last_symbol = (line.rindex('\n') if line.endswith('\n') else len(line))
-            print('Address "{}" is incorrect.'.format(line[:last_symbol]), e)
+            exception(line, e)
 
     elif match_house_label:
         try:
             house_number = match_house_label.group()
             json_address = address_starts_from_letter(line, house_number)
         except (AttributeError, ValueError) as e:
-            last_symbol = (line.rindex('\n') if line.endswith('\n') else len(line))
-            print('Address "{}" is incorrect.'.format(line[:last_symbol]), e)
+            exception(line, e)
 
     else:
         try:
             house_number = re.search(r'\b(\d+).*$', line, re.I).group()
             json_address = address_starts_from_letter(line, house_number)
         except (AttributeError, ValueError) as e:
-            last_symbol = (line.rindex('\n') if line.endswith('\n') else len(line))
-            print('Address "{}" is incorrect.'.format(line[:last_symbol]), e)
+            exception(line, e)
 
     return json_address
+
+
+def exception(line, e):
+    last_symbol = (line.rindex('\n') if line.endswith('\n') else len(line))
+    print('Address "{}" is incorrect.'.format(line[:last_symbol]), e)
 
 
 def address_starts_from_letter(i, house_number):
@@ -72,4 +75,4 @@ def write_to_output_file(input_file, new_file):
         print('Output file:', new_file)
 
 
-write_to_output_file('addresses', 'addresses.json')
+write_to_output_file('addresses_suit', 'addresses.json')
